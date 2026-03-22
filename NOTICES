@@ -1,0 +1,73 @@
+Third-Party Notices
+===================
+
+This project makes use of third-party libraries subject to the following licenses.
+
+
+------------------------------------------------------------------------
+libevdev
+------------------------------------------------------------------------
+
+License 1 — MIT/X11 (libevdev core)
+
+Copyright © 2013 Red Hat, Inc.
+Copyright © 2013 David Herrmann <dh.herrmann@gmail.com>
+
+Permission to use, copy, modify, distribute, and sell this software and its
+documentation for any purpose is hereby granted without fee, provided that
+the above copyright notice appear in all copies and that both that copyright
+notice and this permission notice appear in supporting documentation, and
+that the name of the copyright holders not be used in advertising or
+publicity pertaining to distribution of the software without specific,
+written prior permission. The copyright holders make no representations
+about the suitability of this software for any purpose. It is provided "as
+is" without express or implied warranty.
+
+THE COPYRIGHT HOLDERS DISCLAIM ALL WARRANTIES WITH REGARD TO THIS SOFTWARE,
+INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS, IN NO
+EVENT SHALL THE COPYRIGHT HOLDERS BE LIABLE FOR ANY SPECIAL, INDIRECT OR
+CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM LOSS OF USE,
+DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR OTHER
+TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR PERFORMANCE
+OF THIS SOFTWARE.
+
+----
+
+License 2 — GPL v2 (Linux kernel header, no GPL code linked)
+
+Copyright (c) 1999-2002 Vojtech Pavlik
+
+The following license is from a Linux kernel header file and there is no GPL
+code this package links to.
+
+This program is free software; you can redistribute it and/or modify it
+under the terms of the GNU General Public License version 2 as published by
+the Free Software Foundation.
+
+
+------------------------------------------------------------------------
+Qt Framework
+------------------------------------------------------------------------
+
+Copyright (C) 2024 The Qt Company Ltd.
+Contact: https://www.qt.io/licensing/
+
+This project uses the Qt framework (https://www.qt.io), which is licensed
+under the GNU Lesser General Public License version 3 (LGPL v3).
+
+Qt is dynamically linked by this project. In accordance with the LGPL v3,
+users are entitled to replace the Qt libraries used by this application with
+their own modified versions. Since this project links Qt dynamically, this
+right is preserved — users may substitute compatible Qt shared libraries
+(.so files) on their system without any additional steps required from us.
+
+The full text of the GNU Lesser General Public License version 3 can be
+found at:
+  https://www.gnu.org/licenses/lgpl-3.0.html
+
+The full text of the GNU General Public License version 3 (which the LGPL v3
+incorporates by reference) can be found at:
+  https://www.gnu.org/licenses/gpl-3.0.html
+
+Qt's own copyright notices and license information can be found at:
+  https://doc.qt.io/qt-6/licensing.html
