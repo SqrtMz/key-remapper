@@ -15,5 +15,5 @@ class LabelButton : public QWidget {
 		QPushButton* button;
 		QHBoxLayout* layout;
 		QString target;
-		QList<QString> key_code;
+		int key_code = 0;
 };

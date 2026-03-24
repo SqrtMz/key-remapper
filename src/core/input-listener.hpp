@@ -14,10 +14,10 @@ class InputListener : public QThread {
 		void run() override;
 
 	signals:
-		void send_detected_keys(QList<QString> keys);
+		void send_detected_keys(QList<int> keys);
 
 	private:
 		std::string m_device_path;
 		std::atomic<bool> m_is_listening = false;
-		QList<QString> m_keys;
+		QList<int> m_keys;
 };

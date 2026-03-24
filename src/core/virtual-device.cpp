@@ -1,7 +1,7 @@
 #include "virtual-device.hpp"
 #include <fcntl.h>
 
-VirtualDeviceWorker::VirtualDeviceWorker (const std::string& device_path, QObject* parent) : QObject(parent), m_device_path(device_path) {}
+VirtualDeviceWorker::VirtualDeviceWorker (const std::string& device_path, std::atomic<bool>& input_listener_exists, QObject* parent) : QObject(parent), m_device_path(device_path), m_input_listener_exists(input_listener_exists) {}
 
 void VirtualDeviceWorker::start() {
 
@@ -17,19 +17,22 @@ void VirtualDeviceWorker::start() {
 		return;
 	}
 
-	// libevdev_grab(dev, LIBEVDEV_GRAB);
 	m_is_listening = true;
 
-	do {
+	while (m_is_listening) {
+
+		if (m_input_listener_exists) libevdev_grab(dev, LIBEVDEV_UNGRAB);
+		else libevdev_grab(dev, LIBEVDEV_GRAB);
+
 		struct input_event ev;
 		rc = libevdev_next_event(dev, LIBEVDEV_READ_FLAG_NORMAL, &ev);
 
 		if (rc == 0 && ev.type == 1 && ev.value != 2) emit send_key_events(ev.code, ev.value);
 
 		QThread::msleep(10);
-	} while (m_is_listening);
+	}
 
-	// libevdev_grab(dev, LIBEVDEV_UNGRAB);
+	libevdev_grab(dev, LIBEVDEV_UNGRAB);
 	libevdev_free(dev);
 	::close(fd);
 
@@ -41,10 +44,10 @@ void VirtualDeviceWorker::stop() {
 }
 
 
-VirtualDevice::VirtualDevice(const std::string& device_path, QObject* parent) : QObject(parent), m_device_path(device_path) {
+VirtualDevice::VirtualDevice(const std::string& device_path, std::atomic<bool>& input_listener_exists, QObject* parent) : QObject(parent), m_device_path(device_path) {
 
 	m_worker_thread = new QThread(this);
-	m_vd_worker = new VirtualDeviceWorker(device_path);
+	m_vd_worker = new VirtualDeviceWorker(device_path, input_listener_exists);
 
 	m_vd_worker->moveToThread(m_worker_thread);
 

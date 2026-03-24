@@ -1,1 +1,1 @@
-target_sources(${PROJECT_NAME} PRIVATE "remapper.cpp" "remapper.hpp" "input-listener.cpp" "input-listener.hpp")
+target_sources(${PROJECT_NAME} PRIVATE "input-listener.cpp" "input-listener.hpp" "virtual-controller.cpp" "virtual-controller.hpp" "virtual-device.cpp" "virtual-device.hpp" "device-events.hpp")
