@@ -30,7 +30,7 @@ void VirtualDeviceWorker::start() {
 
 		if (rc == 0 && ev.type == 1 && ev.value != 2) emit send_key_events(ev.code, ev.value);
 
-		QThread::msleep(10);
+		QThread::msleep(1);
 	}
 
 	libevdev_grab(dev, LIBEVDEV_UNGRAB);

@@ -1,6 +1,7 @@
 #include "virtual-controller.hpp"
 
 VirtualController::VirtualController(const std::string& device_path, struct controller_events& events, std::atomic<bool>& input_listener_exists, QObject* parent) : VirtualDevice(device_path, input_listener_exists, parent), m_events(events) {
+
 	struct libevdev* dev = libevdev_new();
 	libevdev_set_name(dev, "Key Remapper Virtual Controller");
 
@@ -44,6 +45,116 @@ VirtualController::VirtualController(const std::string& device_path, struct cont
 	libevdev_enable_event_code(dev, EV_KEY, BTN_MODE, nullptr);
 	libevdev_enable_event_code(dev, EV_KEY, BTN_THUMBL, nullptr);
 	libevdev_enable_event_code(dev, EV_KEY, BTN_THUMBR, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_A, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_B, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_C, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_D, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_E, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_G, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_H, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_I, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_J, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_K, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_L, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_M, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_N, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_O, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_P, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_Q, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_R, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_S, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_T, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_U, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_V, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_W, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_X, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_Y, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_Z, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_SPACE, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_ENTER, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_BACKSPACE, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_TAB, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_ESC, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_CAPSLOCK, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFTSHIFT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHTSHIFT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFTCTRL, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHTCTRL, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFTALT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHTALT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFTMETA, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHTMETA, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_1, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_2, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_3, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_4, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_5, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_6, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_7, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_8, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_9, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_0, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_MINUS, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_EQUAL, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_SEMICOLON, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_APOSTROPHE, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_COMMA, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_DOT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_SLASH, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_BACKSLASH, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFTBRACE, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHTBRACE, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_GRAVE, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_UP, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_DOWN, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_LEFT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_RIGHT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_HOME, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_END, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_PAGEUP, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_PAGEDOWN, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_INSERT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_DELETE, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F1, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F2, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F3, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F4, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F5, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F6, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F7, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F8, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F9, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F10, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F11, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_F12, nullptr);
+
+	libevdev_enable_event_code(dev, EV_KEY, KEY_NUMLOCK, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP0, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP1, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP2, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP3, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP4, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP5, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP6, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP7, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP8, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KP9, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPDOT, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPENTER, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPPLUS, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPMINUS, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPASTERISK, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPSLASH, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPEQUAL, nullptr);
+	libevdev_enable_event_code(dev, EV_KEY, KEY_KPCOMMA, nullptr);
 
 	libevdev_uinput_create_from_device(dev, LIBEVDEV_UINPUT_OPEN_MANAGED, &m_uinput);
 	libevdev_free(dev);
@@ -191,6 +302,10 @@ void VirtualController::handle_key_events(int code, int value) {
 	else if (m_events.btn_tr2->contains(code)) {
 		if (std::all_of(m_events.btn_tr2->begin(), m_events.btn_tr2->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TR2, 1);
 		else generate_key_event(BTN_TR2, 0);
+	}
+
+	else {
+		generate_key_event(code, value);
 	}
 
 	if (!m_lr_lj.isEmpty()) {
