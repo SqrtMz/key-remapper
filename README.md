@@ -1,4 +1,4 @@
-Remap keyboard keys location or remap to a virtual controller.
+Remap keyboard keys to a virtual controller or to different keys.
 
 Create the file `/etc/udev/rules.d/99-key-remapper-controller.rules` with the next content for the virtual controller to be detected as a controller:
 ```
