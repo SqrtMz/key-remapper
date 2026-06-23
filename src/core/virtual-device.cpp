@@ -1,5 +1,6 @@
 #include "virtual-device.hpp"
 #include <fcntl.h>
+#include <unistd.h> // for no namespace ::close()
 
 VirtualDeviceWorker::VirtualDeviceWorker (const std::string& device_path, std::atomic<bool>& input_listener_exists, QObject* parent) : QObject(parent), m_device_path(device_path), m_input_listener_exists(input_listener_exists) {}
 

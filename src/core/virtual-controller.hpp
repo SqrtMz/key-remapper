@@ -15,7 +15,7 @@ class VirtualController : public VirtualDevice {
 		void generate_abs_event(int axis, int value) override;
 
 	protected slots:
-	void handle_key_events(int code, int value) override;
+		void handle_key_events(int code, int value) override;
 
 	private:
 		// Didn't know how to make everything on the key buffer, so made as a "fuck it"

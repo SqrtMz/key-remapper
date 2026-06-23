@@ -1,1 +1,1 @@
-target_sources(${PROJECT_NAME} PRIVATE "input-listener.cpp" "input-listener.hpp" "virtual-controller.cpp" "virtual-controller.hpp" "virtual-device.cpp" "virtual-device.hpp" "device-events.hpp")
+target_sources(${PROJECT_NAME} PRIVATE "input-listener.cpp" "input-listener.hpp" "virtual-device.cpp" "virtual-device.hpp" "virtual-controller.cpp" "virtual-controller.hpp" "virtual-keyboard.cpp" "virtual-keyboard.hpp" "device-events.hpp")

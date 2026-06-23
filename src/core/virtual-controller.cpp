@@ -11,7 +11,7 @@ VirtualController::VirtualController(const std::string& device_path, struct cont
 		.fuzz = 16,
 		.flat = 128
 	};
-	
+
 	struct input_absinfo abs_y = {
 		.value = -1,
 		.minimum = -32768,
@@ -69,9 +69,128 @@ void VirtualController::handle_key_events(int code, int value) {
 		else m_lr_lj.removeOne(0);
 	}
 
-	if (m_events.abs_ljoy_right->contains(code)) {
+	else if (m_events.abs_ljoy_right->contains(code)) {
 		if (std::all_of(m_events.abs_ljoy_right->begin(), m_events.abs_ljoy_right->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_lr_lj.contains(1)) m_lr_lj.prepend(1);
 		else m_lr_lj.removeOne(1);
+	}
+	
+	else if (m_events.abs_ljoy_up->contains(code)) {
+		if (std::all_of(m_events.abs_ljoy_up->begin(), m_events.abs_ljoy_up->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_lj.contains(0)) m_ud_lj.prepend(0);
+		else m_ud_lj.removeOne(0);
+	}
+	
+	else if (m_events.abs_ljoy_down->contains(code)) {
+		if (std::all_of(m_events.abs_ljoy_down->begin(), m_events.abs_ljoy_down->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_lj.contains(1)) m_ud_lj.prepend(1);
+		else m_ud_lj.removeOne(1);
+	}
+	
+	else if (m_events.abs_rjoy_left->contains(code)) {
+		if (std::all_of(m_events.abs_rjoy_left->begin(), m_events.abs_rjoy_left->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_lr_rj.contains(0)) m_lr_rj.prepend(0);
+		else m_lr_rj.removeOne(0);
+	}
+	
+	else if (m_events.abs_rjoy_right->contains(code)) {
+		if (std::all_of(m_events.abs_rjoy_right->begin(), m_events.abs_rjoy_right->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_lr_rj.contains(1)) m_lr_rj.prepend(1);
+		else m_lr_rj.removeOne(1);
+	}
+	
+	else if (m_events.abs_rjoy_up->contains(code)) {
+		if (std::all_of(m_events.abs_rjoy_up->begin(), m_events.abs_rjoy_up->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_rj.contains(0)) m_ud_rj.prepend(0);
+		else m_ud_rj.removeOne(0);
+	}
+	
+	else if (m_events.abs_rjoy_down->contains(code)) {
+		if (std::all_of(m_events.abs_rjoy_down->begin(), m_events.abs_rjoy_down->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_rj.contains(1)) m_ud_rj.prepend(1);
+		else m_ud_rj.removeOne(1);
+	}
+
+	else if (m_events.btn_thumbl->contains(code)) {
+		if (std::all_of(m_events.btn_thumbl->begin(), m_events.btn_thumbl->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_THUMBL, 1);
+		else generate_key_event(BTN_THUMBL, 0);
+	}
+
+	else if (m_events.btn_thumbr->contains(code)) {
+		if (std::all_of(m_events.btn_thumbr->begin(), m_events.btn_thumbr->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_THUMBR, 1);
+		else generate_key_event(BTN_THUMBR, 0);
+	}
+
+
+	else if (m_events.btn_west->contains(code)) {
+		if (std::all_of(m_events.btn_west->begin(), m_events.btn_west->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_WEST, 1);
+		else generate_key_event(BTN_WEST, 0);
+	}
+
+	else if (m_events.btn_east->contains(code)) {
+		if (std::all_of(m_events.btn_east->begin(), m_events.btn_east->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_EAST, 1);
+		else generate_key_event(BTN_EAST, 0);
+	}
+
+	else if (m_events.btn_south->contains(code)) {
+		if (std::all_of(m_events.btn_south->begin(), m_events.btn_south->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_SOUTH, 1);
+		else generate_key_event(BTN_SOUTH, 0);
+	}
+
+	else if (m_events.btn_north->contains(code)) {
+		if (std::all_of(m_events.btn_north->begin(), m_events.btn_north->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_NORTH, 1);
+		else generate_key_event(BTN_NORTH, 0);
+	}
+
+
+	else if (m_events.btn_select->contains(code)) {
+		if (std::all_of(m_events.btn_select->begin(), m_events.btn_select->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_SELECT, 1);
+		else generate_key_event(BTN_SELECT, 0);
+	}
+
+	else if (m_events.btn_mode->contains(code)) {
+		if (std::all_of(m_events.btn_mode->begin(), m_events.btn_mode->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_MODE, 1);
+		else generate_key_event(BTN_MODE, 0);
+	}
+
+	else if (m_events.btn_start->contains(code)) {
+		if (std::all_of(m_events.btn_start->begin(), m_events.btn_start->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_START, 1);
+		else generate_key_event(BTN_START, 0);
+	}
+
+
+	else if (m_events.btn_dpad_up->contains(code)) {
+		if (std::all_of(m_events.btn_dpad_up->begin(), m_events.btn_dpad_up->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_UP, 1);
+		else generate_key_event(BTN_DPAD_UP, 0);
+	}
+
+	else if (m_events.btn_dpad_right->contains(code)) {
+		if (std::all_of(m_events.btn_dpad_right->begin(), m_events.btn_dpad_right->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_RIGHT, 1);
+		else generate_key_event(BTN_DPAD_RIGHT, 0);
+	}
+
+	else if (m_events.btn_dpad_down->contains(code)) {
+		if (std::all_of(m_events.btn_dpad_down->begin(), m_events.btn_dpad_down->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_DOWN, 1);
+		else generate_key_event(BTN_DPAD_DOWN, 0);
+	}
+
+	else if (m_events.btn_dpad_left->contains(code)) {
+		if (std::all_of(m_events.btn_dpad_left->begin(), m_events.btn_dpad_left->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_LEFT, 1);
+		else generate_key_event(BTN_DPAD_LEFT, 0);
+	}
+
+
+	else if (m_events.btn_tl->contains(code)) {
+		if (std::all_of(m_events.btn_tl->begin(), m_events.btn_tl->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TL, 1);
+		else generate_key_event(BTN_TL, 0);
+	}
+
+	else if (m_events.btn_tr->contains(code)) {
+		if (std::all_of(m_events.btn_tr->begin(), m_events.btn_tr->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TR, 1);
+		else generate_key_event(BTN_TR, 0);
+	}
+
+	else if (m_events.btn_tl2->contains(code)) {
+		if (std::all_of(m_events.btn_tl2->begin(), m_events.btn_tl2->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TL2, 1);
+		else generate_key_event(BTN_TL2, 0);
+	}
+
+	else if (m_events.btn_tr2->contains(code)) {
+		if (std::all_of(m_events.btn_tr2->begin(), m_events.btn_tr2->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TR2, 1);
+		else generate_key_event(BTN_TR2, 0);
 	}
 
 	if (!m_lr_lj.isEmpty()) {
@@ -81,33 +200,13 @@ void VirtualController::handle_key_events(int code, int value) {
 		generate_abs_event(ABS_X, 0);
 	}
 
-	if (m_events.abs_ljoy_up->contains(code)) {
-		if (std::all_of(m_events.abs_ljoy_up->begin(), m_events.abs_ljoy_up->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_lj.contains(0)) m_ud_lj.prepend(0);
-		else m_ud_lj.removeOne(0);
-	}
-
-	if (m_events.abs_ljoy_down->contains(code)) {
-		if (std::all_of(m_events.abs_ljoy_down->begin(), m_events.abs_ljoy_down->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_lj.contains(1)) m_ud_lj.prepend(1);
-		else m_ud_lj.removeOne(1);
-	}
-
 	if (!m_ud_lj.isEmpty()) {
 		if (m_ud_lj.at(0) == 0) generate_abs_event(ABS_Y, -32768);
 		else if (m_ud_lj.at(0) == 1) generate_abs_event(ABS_Y, 32767);
 	} else {
 		generate_abs_event(ABS_Y, 0);
 	}
-
-	if (m_events.abs_rjoy_left->contains(code)) {
-		if (std::all_of(m_events.abs_rjoy_left->begin(), m_events.abs_rjoy_left->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_lr_rj.contains(0)) m_lr_rj.prepend(0);
-		else m_lr_rj.removeOne(0);
-	}
-
-	if (m_events.abs_rjoy_right->contains(code)) {
-		if (std::all_of(m_events.abs_rjoy_right->begin(), m_events.abs_rjoy_right->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_lr_rj.contains(1)) m_lr_rj.prepend(1);
-		else m_lr_rj.removeOne(1);
-	}
-
+	
 	if (!m_lr_rj.isEmpty()) {
 		if (m_lr_rj.at(0) == 0) generate_abs_event(ABS_RX, -32768);
 		else if (m_lr_rj.at(0) == 1) generate_abs_event(ABS_RX, 32767);
@@ -115,110 +214,10 @@ void VirtualController::handle_key_events(int code, int value) {
 		generate_abs_event(ABS_RX, 0);
 	}
 
-	if (m_events.abs_rjoy_up->contains(code)) {
-		if (std::all_of(m_events.abs_rjoy_up->begin(), m_events.abs_rjoy_up->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_rj.contains(0)) m_ud_rj.prepend(0);
-		else m_ud_rj.removeOne(0);
-	}
-
-	if (m_events.abs_rjoy_down->contains(code)) {
-		if (std::all_of(m_events.abs_rjoy_down->begin(), m_events.abs_rjoy_down->end(), [this](int k){return m_held_keys.contains(k);}) && value == 1 && !m_ud_rj.contains(1)) m_ud_rj.prepend(1);
-		else m_ud_rj.removeOne(1);
-	}
-
 	if (!m_ud_rj.isEmpty()) {
 		if (m_ud_rj.at(0) == 0) generate_abs_event(ABS_RY, -32768);
 		else if (m_ud_rj.at(0) == 1) generate_abs_event(ABS_RY, 32767);
 	} else {
 		generate_abs_event(ABS_RY, 0);
-	}
-
-
-	if (m_events.btn_thumbl->contains(code)) {
-		if (std::all_of(m_events.btn_thumbl->begin(), m_events.btn_thumbl->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_THUMBL, 1);
-		else generate_key_event(BTN_THUMBL, 0);
-	}
-
-	if (m_events.btn_thumbr->contains(code)) {
-		if (std::all_of(m_events.btn_thumbr->begin(), m_events.btn_thumbr->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_THUMBR, 1);
-		else generate_key_event(BTN_THUMBR, 0);
-	}
-
-
-	if (m_events.btn_west->contains(code)) {
-		if (std::all_of(m_events.btn_west->begin(), m_events.btn_west->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_WEST, 1);
-		else generate_key_event(BTN_WEST, 0);
-	}
-
-	if (m_events.btn_east->contains(code)) {
-		if (std::all_of(m_events.btn_east->begin(), m_events.btn_east->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_EAST, 1);
-		else generate_key_event(BTN_EAST, 0);
-	}
-
-	if (m_events.btn_south->contains(code)) {
-		if (std::all_of(m_events.btn_south->begin(), m_events.btn_south->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_SOUTH, 1);
-		else generate_key_event(BTN_SOUTH, 0);
-	}
-
-	if (m_events.btn_north->contains(code)) {
-		if (std::all_of(m_events.btn_north->begin(), m_events.btn_north->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_NORTH, 1);
-		else generate_key_event(BTN_NORTH, 0);
-	}
-
-
-	if (m_events.btn_select->contains(code)) {
-		if (std::all_of(m_events.btn_select->begin(), m_events.btn_select->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_SELECT, 1);
-		else generate_key_event(BTN_SELECT, 0);
-	}
-
-	if (m_events.btn_mode->contains(code)) {
-		if (std::all_of(m_events.btn_mode->begin(), m_events.btn_mode->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_MODE, 1);
-		else generate_key_event(BTN_MODE, 0);
-	}
-
-	if (m_events.btn_start->contains(code)) {
-		if (std::all_of(m_events.btn_start->begin(), m_events.btn_start->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_START, 1);
-		else generate_key_event(BTN_START, 0);
-	}
-
-
-	if (m_events.btn_dpad_up->contains(code)) {
-		if (std::all_of(m_events.btn_dpad_up->begin(), m_events.btn_dpad_up->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_UP, 1);
-		else generate_key_event(BTN_DPAD_UP, 0);
-	}
-
-	if (m_events.btn_dpad_right->contains(code)) {
-		if (std::all_of(m_events.btn_dpad_right->begin(), m_events.btn_dpad_right->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_RIGHT, 1);
-		else generate_key_event(BTN_DPAD_RIGHT, 0);
-	}
-
-	if (m_events.btn_dpad_down->contains(code)) {
-		if (std::all_of(m_events.btn_dpad_down->begin(), m_events.btn_dpad_down->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_DOWN, 1);
-		else generate_key_event(BTN_DPAD_DOWN, 0);
-	}
-
-	if (m_events.btn_dpad_left->contains(code)) {
-		if (std::all_of(m_events.btn_dpad_left->begin(), m_events.btn_dpad_left->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_DPAD_LEFT, 1);
-		else generate_key_event(BTN_DPAD_LEFT, 0);
-	}
-
-
-	if (m_events.btn_tl->contains(code)) {
-		if (std::all_of(m_events.btn_tl->begin(), m_events.btn_tl->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TL, 1);
-		else generate_key_event(BTN_TL, 0);
-	}
-
-	if (m_events.btn_tr->contains(code)) {
-		if (std::all_of(m_events.btn_tr->begin(), m_events.btn_tr->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TR, 1);
-		else generate_key_event(BTN_TR, 0);
-	}
-
-	if (m_events.btn_tl2->contains(code)) {
-		if (std::all_of(m_events.btn_tl2->begin(), m_events.btn_tl2->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TL2, 1);
-		else generate_key_event(BTN_TL2, 0);
-	}
-
-	if (m_events.btn_tr2->contains(code)) {
-		if (std::all_of(m_events.btn_tr2->begin(), m_events.btn_tr2->end(), [this](int k){return m_held_keys.contains(k);})) generate_key_event(BTN_TR2, 1);
-		else generate_key_event(BTN_TR2, 0);
 	}
 }

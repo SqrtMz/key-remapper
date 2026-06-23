@@ -1,6 +1,7 @@
 #include "input-listener.hpp"
 #include <iostream>
 #include <fcntl.h>
+#include <unistd.h>
 #include <libevdev/libevdev.h>
 
 InputListener::InputListener(const std::string& device_path, QObject* parent) : QThread(parent), m_device_path(device_path) {}
