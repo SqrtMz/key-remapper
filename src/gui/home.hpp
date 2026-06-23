@@ -27,6 +27,7 @@ class Home : public QMainWindow {
 	private:
 		QMenu* m_file_menu;
 		QMenu* m_devices_menu;
+		QMenu* m_help_menu;
 		std::string m_selected_device;
 
 		QSystemTrayIcon *m_tray;

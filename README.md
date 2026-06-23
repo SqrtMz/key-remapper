@@ -1,4 +1,4 @@
-GUI utility to remap keyboard keys to a virtual controller or to different keys.
+GUI utility to remap keyboard keys to a virtual controller or to different keys on Linux.
 
 Create the file `/etc/udev/rules.d/99-key-remapper-controller.rules` with the next content for the virtual controller to be detected as a controller:
 ```

@@ -12,6 +12,7 @@
 #include <QTabWidget>
 #include <QLabel>
 #include <QScrollArea>
+#include <QMessageBox>
 #include <libevdev/libevdev.h>
 #include "controller-view.hpp"
 
@@ -41,6 +42,13 @@ Home::Home(QWidget* parent) : QMainWindow(parent) {
 	
 	m_devices_menu = menuBar()->addMenu("&Devices");
 	connect(m_devices_menu, &QMenu::aboutToShow, this, &Home::reload_devices);
+
+	m_help_menu = menuBar()->addMenu("&Help");
+
+	QAction* about_action = m_help_menu->addAction("About");
+	connect(about_action, &QAction::triggered, this, [this](){
+		QMessageBox::about(this, "About", "Key Remapper\n\nGUI utility to remap keyboard keys to a virtual controller or to different keys on Linux.\n\nCreated by SqrtMz.\n\nhttps://github.com/SqrtMz/key-remapper");
+	});
 	
 	QWidget* w = new QWidget(this);
 	setCentralWidget(w);
